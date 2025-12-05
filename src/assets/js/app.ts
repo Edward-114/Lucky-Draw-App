@@ -41,9 +41,17 @@ import SoundEffects from '@js/SoundEffects';
     return;
   }
 
-  const soundEffects = new SoundEffects();
-  const MAX_REEL_ITEMS = 40;
+  const MAX_REEL_ITEMS = 20;
+  const REEL_SPIN_PER_ITEM_MS = 80;
+  const ENABLED_CONFETTI_ANIMATION = false;
+  const DEFAULT_NAME_LIST_LENGTH = 120;
+  const DEFAULT_NAME_LIST = Array.from({ length: DEFAULT_NAME_LIST_LENGTH }, (_, i) => `${i + 1}`);
+  const REMOVE_WINNER_BY_DEFAULT = true;
+  const MUTED_BY_DEFAULT = true;
   const CONFETTI_COLORS = ['#26ccff', '#a25afd', '#ff5e7e', '#88ff5a', '#fcff42', '#ffa62d', '#ff36ff'];
+  
+
+  const soundEffects = new SoundEffects(MUTED_BY_DEFAULT);
   let confettiAnimationId;
 
   /** Confeetti animation instance */
@@ -87,7 +95,9 @@ import SoundEffects from '@js/SoundEffects';
 
   /**  Functions to be trigger after spinning */
   const onSpinEnd = async () => {
-    confettiAnimation();
+    if (ENABLED_CONFETTI_ANIMATION) {
+      confettiAnimation();
+    }
     sunburstSvg.style.display = 'block';
     await soundEffects.win();
     drawButton.disabled = false;
@@ -98,6 +108,9 @@ import SoundEffects from '@js/SoundEffects';
   const slot = new Slot({
     reelContainerSelector: '#reel',
     maxReelItems: MAX_REEL_ITEMS,
+    reelSpinPerItemMs: REEL_SPIN_PER_ITEM_MS,
+    defaultNameList: DEFAULT_NAME_LIST,
+    removeWinner: REMOVE_WINNER_BY_DEFAULT,
     onSpinStart,
     onSpinEnd,
     onNameListChanged: stopWinningAnimation

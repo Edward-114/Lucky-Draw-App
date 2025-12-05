@@ -1,8 +1,12 @@
 interface SlotConfigurations {
   /** User configuration for maximum item inside a reel */
   maxReelItems?: number;
+  /** User configuration for duration of spinning per item in milliseconds */
+  reelSpinPerItemMs?: number;
   /** User configuration for whether winner should be removed from name list */
   removeWinner?: boolean;
+  /** User configuration for default list of names to draw from */
+  defaultNameList?: string[];
   /** User configuration for element selector which reel items should append to */
   reelContainerSelector: string;
   /** User configuration for callback function that runs before spinning reel */
@@ -28,6 +32,9 @@ export default class Slot {
   /** Maximum item inside a reel */
   private maxReelItems: NonNullable<SlotConfigurations['maxReelItems']>;
 
+  /** Duration of spinning per item in milliseconds */
+  private reelSpinPerItemMs: NonNullable<SlotConfigurations['reelSpinPerItemMs']>;
+
   /** Whether winner should be removed from name list */
   private shouldRemoveWinner: NonNullable<SlotConfigurations['removeWinner']>;
 
@@ -46,7 +53,9 @@ export default class Slot {
   /**
    * Constructor of Slot
    * @param maxReelItems  Maximum item inside a reel
+   * @param reelSpinPerItemMs  Duration of spinning per item in milliseconds
    * @param removeWinner  Whether winner should be removed from name list
+   * @param defaultNameList  Default list of names to draw from
    * @param reelContainerSelector  The element ID of reel items to be appended
    * @param onSpinStart  Callback function that runs before spinning reel
    * @param onNameListChanged  Callback function that runs when user updates the name list
@@ -54,17 +63,20 @@ export default class Slot {
   constructor(
     {
       maxReelItems = 30,
+      reelSpinPerItemMs = 80,
       removeWinner = true,
+      defaultNameList = [],
       reelContainerSelector,
       onSpinStart,
       onSpinEnd,
       onNameListChanged
     }: SlotConfigurations
   ) {
-    this.nameList = [];
+    this.nameList = defaultNameList;
     this.havePreviousWinner = false;
     this.reelContainer = document.querySelector(reelContainerSelector);
     this.maxReelItems = maxReelItems;
+    this.reelSpinPerItemMs = reelSpinPerItemMs;
     this.shouldRemoveWinner = removeWinner;
     this.onSpinStart = onSpinStart;
     this.onSpinEnd = onSpinEnd;
@@ -81,7 +93,7 @@ export default class Slot {
         { transform: `translateY(-${(this.maxReelItems - 1) * (7.5 * 16)}px)`, filter: 'blur(0)' }
       ],
       {
-        duration: this.maxReelItems * 100, // 100ms for 1 item
+        duration: this.maxReelItems * this.reelSpinPerItemMs, // 100ms for 1 item
         easing: 'ease-in-out',
         iterations: 1
       }
