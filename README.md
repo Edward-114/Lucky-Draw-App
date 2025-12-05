@@ -61,3 +61,4 @@ This app works fine under common static web hosting choices. Here's a general ou
 3. Next, you'll need to build the project. Use the command `yarn build` to initiate the build process. This command will compile and bundle the source code, generating the assets required for hosting.
 
 4. Once the build process is complete, you'll need to copy all the generated assets located under the `/dist` directory. The specific command to accomplish this may vary depending on the CI/CD tool and OS you're using. Typically, you'll need to include a step in your pipeline that copies the contents of the `/dist` directory to a storage accessible by your chosen static web hosting service.
+

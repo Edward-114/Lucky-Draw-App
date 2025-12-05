@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-61.562 16.333 604.279 204.751"
+  xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <style bx:fonts="Poppins">
+      @import
+      url(https://fonts.googleapis.com/css2?family=Poppins%3Aital%2Cwght%400%2C100%3B0%2C200%3B0%2C300%3B0%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B0%2C800%3B0%2C900%3B1%2C100%3B1%2C200%3B1%2C300%3B1%2C400%3B1%2C500%3B1%2C600%3B1%2C700%3B1%2C800%3B1%2C900&amp;display=swap);</style>
+  </defs>
+  <text
+    style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;"
+    x="304.487" y="149.573"> </text>
+  <text
+    style="fill: rgb(255, 255, 255); font-family: Poppins; font-size: 28px; font-weight: 600; paint-order: stroke; stroke: rgb(255, 105, 0); stroke-linejoin: round; stroke-width: 5px; text-anchor: middle; white-space: pre; transform-box: fill-box; transform-origin: 140.181px 33.5338px;"
+    transform="matrix(2.078644, 0, 0, 2.078644, 47.041412, -36.19315)">
+    <tspan x="198.361" y="118.9">Annual Dinner 2025</tspan>
+    <tspan x="198.36099243164062" dy="0.5em">​</tspan>
+    <tspan><tspan x="198.36099243164062" dy="1em">​</tspan>Lucky Draw</tspan>
+  </text>
+</svg>
