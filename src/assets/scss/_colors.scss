@@ -4,14 +4,14 @@ $color-mid-grey: #999999;
 $color-dark-grey: #666666;
 $color-black: #000000;
 
-$color-red-step1: #ff462d;
-$color-red-step2: #ff422f;
-$color-red-step3: #ff3634;
-$color-red-step4: #ff223c;
-$color-red-step5: #ff0c45;
+$color-blue-step1: #2d4a7a;
+$color-blue-step2: #254080;
+$color-blue-step3: #1d3675;
+$color-blue-step4: #162c6a;
+$color-blue-step5: #0f225f;
 
-$color-yellow: #ffbf1f;
-$color-blood-orange: #e54c23;
+$color-dark-orange: #ff9100;
+$color-light-blue: #6b8bc3;
 $color-shadow: rgba($color-black, 0.2);
 
 // body
@@ -21,24 +21,24 @@ $color-link: rgba($color-white, 0.8);
 $color-link-hover: rgba($color-white, 0.9);
 
 // title
-$color-title-border: $color-yellow;
+$color-title-border: $color-dark-orange;
 
 // button
 $color-button-text: $color-white;
-$color-button-default-background: $color-yellow;
-$color-button-default-hover-background: lighten($color-yellow, 5%);
-$color-button-danger-background: $color-blood-orange;
-$color-button-danger-hover-background: lighten($color-blood-orange, 5%);
+$color-button-default-background: $color-dark-orange;
+$color-button-default-hover-background: lighten($color-dark-orange, 5%);
+$color-button-danger-background: $color-light-blue;
+$color-button-danger-hover-background: lighten($color-light-blue, 5%);
 
 // slot
-$color-slot-background: $color-yellow;
+$color-slot-background: $color-dark-orange;
 $color-slot-shadow: $color-shadow;
 $color-slot-inner-background: $color-white;
 $color-slot-text: $color-black;
 
 // settings
 $color-settings-mask: rgba($color-black, 0.6);
-$color-settings-background: darken($color-red-step5, 8%);
+$color-settings-background: darken($color-blue-step5, 8%);
 
 // textarea
 $color-input-background: $color-light-grey;
@@ -47,4 +47,4 @@ $color-input-text: $color-black;
 
 // switch
 $color-switch-handle-disabled: $color-dark-grey;
-$color-switch-handle: darken($color-red-step5, 8%);
+$color-switch-handle: darken($color-blue-step5, 8%);
