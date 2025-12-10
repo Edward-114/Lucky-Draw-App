@@ -16,6 +16,8 @@ import SoundEffects from '@js/SoundEffects';
   const nameListTextArea = document.getElementById('name-list') as HTMLTextAreaElement | null;
   const removeNameFromListCheckbox = document.getElementById('remove-from-list') as HTMLInputElement | null;
   const enableSoundCheckbox = document.getElementById('enable-sound') as HTMLInputElement | null;
+  const winnerList = document.getElementById('winner-list') as HTMLDivElement | null;
+  const clearHistoryButton = document.getElementById('clear-history-button') as HTMLButtonElement | null;
 
   // Graceful exit if necessary elements are not found
   if (!(
@@ -31,6 +33,8 @@ import SoundEffects from '@js/SoundEffects';
     && nameListTextArea
     && removeNameFromListCheckbox
     && enableSoundCheckbox
+    && winnerList
+    && clearHistoryButton
   )) {
     console.error('One or more Element ID is invalid. This is possibly a bug.');
     return;
@@ -94,7 +98,7 @@ import SoundEffects from '@js/SoundEffects';
   };
 
   /**  Functions to be trigger after spinning */
-  const onSpinEnd = async () => {
+  const onSpinEnd = async (winner: string) => {
     if (ENABLED_CONFETTI_ANIMATION) {
       confettiAnimation();
     }
@@ -102,6 +106,17 @@ import SoundEffects from '@js/SoundEffects';
     await soundEffects.win();
     drawButton.disabled = false;
     settingsButton.disabled = false;
+
+    if (winnerList) {
+      const winnerItem = document.createElement('div');
+      winnerItem.classList.add('winner-item');
+      winnerItem.textContent = winner;
+      winnerList.prepend(winnerItem);
+
+      if (winnerList.children.length > 8) {
+        winnerList.lastElementChild?.remove();
+      }
+    }
   };
 
   /** Slot instance */
@@ -174,4 +189,11 @@ import SoundEffects from '@js/SoundEffects';
 
   // Click handler for "Discard and close" button for setting page
   settingsCloseButton.addEventListener('click', onSettingsClose);
+
+  // Click handler for "Clear History" button
+  clearHistoryButton?.addEventListener('click', () => {
+    if (winnerList) {
+      winnerList.innerHTML = '';
+    }
+  });
 })();

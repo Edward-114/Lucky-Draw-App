@@ -7,6 +7,11 @@ include ../mixins/icons
     button#settings-button.icon-button.icon-button--small
       +svg-icon.red.big(svg-icon-name='settings')
 
+  .winner-history
+    .winner-history__title Recent Winners
+    #winner-list.winner-history__list
+    button#clear-history-button.solid-button Clear History
+
   canvas#confetti-canvas.confetti
 
   #lucky-draw
