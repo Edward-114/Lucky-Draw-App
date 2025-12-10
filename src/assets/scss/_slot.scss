@@ -5,6 +5,24 @@
   z-index: $z-index-lucky-draw; // make sure contents are on top of confetting
 }
 
+.company-logo {
+  display: block;
+  max-width: 30rem;
+  width: 100%;
+  height: auto;
+  margin: 2rem auto 1rem; // Top margin, centered horizontally, bottom margin
+  position: relative;
+  z-index: $z-index-title; // Same z-index level as title
+  filter: drop-shadow(0 5px 10px $color-white) drop-shadow(0 -5px 10px $color-white) drop-shadow(0 15px 40px $color-white);
+
+  @each $media-query, $factor in $scale-factors {
+    @media #{$media-query} {
+      max-width: 30rem * $factor;
+      margin: 2rem * $factor auto 1rem * $factor;
+    }
+  }
+}
+
 .title {
   height: auto;
   max-width: $title-width;
